@@ -94,7 +94,7 @@ def make_soup(link: str, headers: dict = None, pause_interval: float = None) -> 
 
     # if no pause interval was passed pause for a random interval to avoid
     # overloading websites
-    if pause_interval is None: pause_interval = random.uniform(0.5, 1.5)
+    if pause_interval is None: pause_interval = random.uniform(0.5, 2)
 
     time.sleep(pause_interval)
 
@@ -251,7 +251,7 @@ def main():
                 position=0)):
 
             # define the save location of the entry
-            entry_file = thread_dir / f"{entry[2]}.txt"
+            entry_file = thread_dir / f"{entry[2].replace(' ', '').replace(':', '-')}.txt"
 
             # check if the entry exists, if it does don't redownload
             if entry_file.exists(): continue
